@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import kozhiada from "../assets/kozhiada.png";
+import madak from "../assets/madak.png"
+import ajoora from "../assets/ajoora.jpg"
 import { useCart } from "../context/CartContext";
 
 // Sample data
@@ -8,29 +10,25 @@ const productsData = [
   {
     id: 1,
     name: "Kozhiada",
-    price: 120,
+    price: 600,
+    weight: "1Kg",
     image: kozhiada,
     type: "non-veg",
   },
   {
     id: 2,
-    name: "Chicken Puff",
-    price: 80,
-    image: kozhiada,
-    type: "non-veg",
-  },
-  {
-    id: 3,
-    name: "Veg Cutlet",
-    price: 50,
-    image: kozhiada,
+    name: "Madak",
+    price: 250,
+    weight: "1Kg",
+    image: madak,
     type: "veg",
   },
   {
-    id: 4,
-    name: "Veg Roll",
-    price: 60,
-    image: kozhiada,
+    id: 3,
+    name: "Ajoora",
+    price: 200,
+    weight: "1Kg",
+    image: ajoora,
     type: "veg",
   },
 ];
@@ -106,6 +104,9 @@ const Products = () => {
             <div className="mt-4">
               <p className="text-xs text-gray-400">Bakefills</p>
               <h3 className="text-md font-semibold">{item.name}</h3>
+              <p className="text-xs text-orange-500 font-medium mt-1">
+                {item.weight}
+              </p>
 
               {/* Rating */}
               <div className="text-orange-400 text-sm mt-1">

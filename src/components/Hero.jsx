@@ -20,9 +20,7 @@ const Hero = () => {
           </h1>
 
           <p className="mt-5 text-sm md:text-base text-[#444] opacity-80">
-            Discover the taste of tradition with a modern twist.
-            From crispy Kozhiada to delightful baked treats,
-            Bakefills brings warmth to every bite.
+            At Bakefills, we bring you the taste of tradition with every bite. Our recipes are inspired by authentic homemade flavors, crafted with care, and made fresh using quality ingredients. We believe food is not just about taste—it’s about memories, culture, and comfort.
           </p>
 
           {/* Search */}
