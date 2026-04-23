@@ -1,6 +1,7 @@
 import { ShoppingBag } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useEffect, useState } from "react";
+import logo from "../assets/bakefills.png";
 
 const Navbar = () => {
   const { cart, setIsCartOpen } = useCart(); // 👈 added modal control
@@ -36,7 +37,9 @@ const Navbar = () => {
     >
       {/* Logo */}
       <h1 className="text-xl font-semibold tracking-wide cursor-pointer">
-        <a href="#home">BAKEFILLS</a>
+        <a href="#home">
+          <img src={logo} alt="BakeFills Logo" className="h-10" />
+        </a>
       </h1>
 
       {/* Links */}

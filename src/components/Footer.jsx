@@ -1,4 +1,5 @@
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
+import logo from "../assets/bakefills.png";
 const Footer = () => {
   return (
     <footer className="bg-[#2b2b2b] text-white px-6 md:px-28 py-12">
@@ -8,7 +9,7 @@ const Footer = () => {
 
         {/* Brand */}
         <div>
-          <h2 className="text-xl font-semibold">BAKEFILLS</h2>
+          <img src={logo} alt="BakeFills Logo" className="h-16 mt-4" />
           <p className="mt-4 text-sm text-gray-300 leading-relaxed">
             Freshly baked delights made with love and tradition.
             Bringing happiness in every bite.
@@ -22,7 +23,6 @@ const Footer = () => {
             <li className="hover:text-orange-400 cursor-pointer">Home</li>
             <li className="hover:text-orange-400 cursor-pointer">Products</li>
             <li className="hover:text-orange-400 cursor-pointer">About</li>
-            <li className="hover:text-orange-400 cursor-pointer">Contact</li>
           </ul>
         </div>
 
@@ -32,7 +32,6 @@ const Footer = () => {
           <ul className="space-y-2 text-sm text-gray-300">
             <li className="hover:text-orange-400 cursor-pointer">Veg</li>
             <li className="hover:text-orange-400 cursor-pointer">Non-Veg</li>
-            <li className="hover:text-orange-400 cursor-pointer">Snacks</li>
             <li className="hover:text-orange-400 cursor-pointer">Specials</li>
           </ul>
         </div>
@@ -41,8 +40,8 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-4">Contact</h3>
           <p className="text-sm text-gray-300">📍 Calicut, Kerala</p>
-          <p className="text-sm text-gray-300 mt-2">📞 +91 98765 43210</p>
-          <p className="text-sm text-gray-300 mt-2">✉️ bakefills@gmail.com</p>
+          <p className="text-sm text-gray-300 mt-2">📞 +91 9744827013</p>
+          <p className="text-sm text-gray-300 mt-2">✉️ bakefillsfoods@gmail.com</p>
 
           {/* Social Icons */}
           <div className="flex gap-4 mt-4">
