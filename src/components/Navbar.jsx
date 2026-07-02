@@ -32,11 +32,11 @@ const Navbar = () => {
       }`}
     >
       {/* Logo */}
-      <h1 className="text-xl font-semibold tracking-wide cursor-pointer">
-        <a href="#home">
-          <img src={logo} alt="BakeFills Logo" className="h-9 md:h-10" />
+      <div className="text-xl font-semibold tracking-wide cursor-pointer">
+        <a href="#home" aria-label="Bakefills home">
+          <img src={logo} alt="Bakefills" className="h-9 md:h-10" />
         </a>
-      </h1>
+      </div>
 
       {/* Cart */}
       <div

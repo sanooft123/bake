@@ -9,7 +9,7 @@ const Footer = () => {
 
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start gap-4">
-          <img src={logo} alt="BakeFills Logo" className="h-16" />
+          <img src={logo} alt="BakeFills Logo" className="h-16" loading="lazy" decoding="async" />
           
         </div>
 

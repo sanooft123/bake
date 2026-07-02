@@ -45,7 +45,7 @@ const Testimonials = () => {
           >
             {/* Profile (No Image) */}
             <div>
-              <h4 className="text-md font-semibold">{item.name}</h4>
+              <h3 className="text-md font-semibold">{item.name}</h3>
               <p className="text-xs text-gray-500">{item.role}</p>
             </div>
 

@@ -15,6 +15,7 @@ const Hero = () => {
           loop
           muted
           playsInline
+          aria-hidden="true"
         />
 
         {/* Dark overlay for readability */}

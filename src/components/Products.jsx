@@ -44,8 +44,6 @@ export default function Products({ image = kozhiadaPhoto }) {
       style={{ fontFamily: "'Manrope', sans-serif" }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&display=swap');
-
         .kz-title { font-family: 'Anton', sans-serif; letter-spacing: 0.02em; }
         .kz-ghost { font-family: 'Anton', sans-serif; line-height: 0.82; user-select: none; }
 
@@ -95,6 +93,8 @@ export default function Products({ image = kozhiadaPhoto }) {
               src={image}
               alt="A white bowl piled with golden, crimped-edge kozhiada"
               className="kz-img w-full h-full object-contain rounded-3xl"
+              loading="lazy"
+              decoding="async"
               onError={() => setImgOk(false)}
             />
           ) : (
@@ -148,9 +148,9 @@ export default function Products({ image = kozhiadaPhoto }) {
             <path d="M22 27 L25 21" stroke={PALETTE.cream} strokeWidth="3.5" strokeLinecap="round" />
           </svg>
 
-          <h1 className="kz-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase relative z-10">
+          <h2 className="kz-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase relative z-10">
             Kozhiada — Malabar Special
-          </h1>
+          </h2>
 
           <div className="mt-5 mb-6 sm:mt-6 sm:mb-8 h-px w-32" style={{ backgroundColor: "rgba(255,248,238,0.5)" }} />
 
