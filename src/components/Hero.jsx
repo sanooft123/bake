@@ -1,61 +1,61 @@
-import { Search, ShoppingBag } from "lucide-react";
-import kozhiada from "../assets/kozhiada.png";
+import heroVideo from "../assets/hero-video.mp4";
 import Navbar from "./Navbar";
 
 const Hero = () => {
   return (
     <section id="home">
-      <div className="relative mb-20 w-full bg-gradient-to-b from-[#2b2b2b] via-[#ffffff] to-white overflow-hidden">
+      <div className="relative w-full h-screen min-h-[600px] overflow-hidden bg-[#2b2b2b]">
+        <Navbar />
 
-      <Navbar/>
+        {/* Background video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
 
-      {/* Hero Section */}
-      <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-28 mt-10 md:mt-28">
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/55" />
 
-        {/* LEFT CONTENT */}
-        <div className="text-center md:text-left max-w-xl">
-          <h1 className="text-3xl md:text-6xl font-bold leading-tight text-[#2b2b2b]">
-            Freshly Baked <br />
-            Happiness in Every Bite
-          </h1>
+        {/* Content */}
+        <div className="relative z-10 flex items-center h-full px-6 sm:px-10 md:px-28">
+          <div className="text-center md:text-left max-w-xl mx-auto md:mx-0">
+            <p className="text-orange-400 text-xs md:text-sm tracking-[0.3em] uppercase mb-4">
+              Handmade &middot; Traditional &middot; Fresh
+            </p>
 
-          <p className="mt-5 text-sm md:text-base text-[#444] opacity-80">
-            At Bakefills, we bring you the taste of tradition with every bite. Our recipes are inspired by authentic homemade flavors, crafted with care, and made fresh using quality ingredients. We believe food is not just about taste—it’s about memories, culture, and comfort.
-          </p>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">
+              Meet Our Signature <br />
+              Kozhiada
+            </h1>
 
-          {/* Search */}
-          <div className="mt-6 mb-10 flex items-center bg-white shadow-md rounded-full p-2 w-full max-w-md">
-            <input
-              type="text"
-              placeholder="Search for baked goodies..."
-              className="flex-1 bg-transparent outline-none px-4 text-sm placeholder-gray-500"
-            />
+            <p className="mt-5 text-sm md:text-base text-gray-200 opacity-90 max-w-md mx-auto md:mx-0">
+              At Bakefills, we pour tradition into every twist of dough. Right
+              now we're pouring all of it into one thing &mdash; our
+              crispy-outside, juicy-inside Kozhiada, made fresh to order.
+            </p>
 
-            <button className="bg-orange-500 p-2 rounded-full hover:bg-orange-600 transition">
-              <Search size={18} className="text-white" />
-            </button>
+            <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+              <a
+                href="#products"
+                className="bg-orange-500 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-orange-600 transition"
+              >
+                Order Kozhiada
+              </a>
+              <a
+                href="#about"
+                className="border border-white/60 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 transition"
+              >
+                Our Story
+              </a>
+            </div>
           </div>
         </div>
-
-        {/* RIGHT IMAGE */}
-        <div className="relative mb-10 md:mb-0">
-          <img
-            src={kozhiada}
-            alt="Kozhiada"
-            className="w-[260px] md:w-[420px] drop-shadow-2xl"
-          />
-
-          {/* Glow effect */}
-          <div className="absolute inset-0 bg-orange-200 blur-3xl opacity-30 -z-10"></div>
-        </div>
       </div>
-
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
-    </div>
-
     </section>
-    
   );
 };
 

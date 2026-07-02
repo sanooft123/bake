@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import logo from "../assets/bakefills.png";
 
 const Navbar = () => {
-  const { cart, setIsCartOpen } = useCart(); // 👈 added modal control
+  const { cart, setIsCartOpen } = useCart();
   const [scrolled, setScrolled] = useState(false);
 
   // Detect scroll
@@ -25,11 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 
-      flex items-center justify-between 
-      px-6 md:px-16 py-4 text-white transition-all duration-300
-      
-      ${
+      className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 md:px-16 py-4 text-white transition-all duration-300 ${
         scrolled
           ? "bg-[#2b2b2b]/90 backdrop-blur-md shadow-md"
           : "bg-gradient-to-b from-black/40 to-transparent backdrop-blur-md"
@@ -38,32 +34,11 @@ const Navbar = () => {
       {/* Logo */}
       <h1 className="text-xl font-semibold tracking-wide cursor-pointer">
         <a href="#home">
-          <img src={logo} alt="BakeFills Logo" className="h-10" />
+          <img src={logo} alt="BakeFills Logo" className="h-9 md:h-10" />
         </a>
       </h1>
 
-      {/* Links */}
-      <ul className="hidden md:flex gap-10 text-sm">
-        <li>
-          <a href="#products" className="hover:text-orange-400 transition">
-            Products
-          </a>
-        </li>
-
-        <li>
-          <a href="#about" className="hover:text-orange-400 transition">
-            About Us
-          </a>
-        </li>
-
-        <li>
-          <a href="#testimonials" className="hover:text-orange-400 transition">
-            Reviews
-          </a>
-        </li>
-      </ul>
-
-      {/* Cart (CLICKABLE NOW) */}
+      {/* Cart */}
       <div
         onClick={() => setIsCartOpen(true)}
         className="relative cursor-pointer"

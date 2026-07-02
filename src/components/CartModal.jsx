@@ -125,9 +125,9 @@ const CartModal = () => {
     };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      
-      <div className="bg-white w-full max-w-2xl rounded-2xl p-6 relative">
+    <div className="fixed inset-0 bg-black/50 flex items-start sm:items-center justify-center z-50 overflow-y-auto p-4">
+
+      <div className="bg-white w-full max-w-2xl rounded-2xl p-5 sm:p-6 relative my-8 sm:my-0 max-h-[90vh] overflow-y-auto">
 
         {/* Close */}
         <button
