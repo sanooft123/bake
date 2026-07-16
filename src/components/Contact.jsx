@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const contactDetails = [
-  { icon: Phone, label: "+91 9744827013", href: "tel:+919744827013" },
+  { icon: Phone, label: "+91 7012471862", href: "tel:+917012471862" },
   { icon: Mail, label: "bakefillsfoods@gmail.com", href: "mailto:bakefillsfoods@gmail.com" },
   { icon: MapPin, label: "Calicut, Kerala", href: null },
 ];

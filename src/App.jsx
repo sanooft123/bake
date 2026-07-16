@@ -1,4 +1,3 @@
-import CartModal from "./components/CartModal";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -12,12 +11,10 @@ function App() {
       <Hero />
       <WhyUs />
       <Products />
-      
+
       <Testimonials />
       <Contact />
       <Footer />
-
-      <CartModal/>
     </>
   );
 }

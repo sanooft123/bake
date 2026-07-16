@@ -1,6 +1,5 @@
 import { useState } from "react";
 import kozhiadaPhoto from "../assets/kozhiada.jpeg";
-import { useCart } from "../context/CartContext";
 
 /*
   Products — product section styled after the split-panel reference
@@ -21,20 +20,51 @@ const PALETTE = {
 const product = {
   id: 1,
   name: "Kozhiada",
-  price: 240,
-  weight: "400g",
+  description:
+    "Crisp, hand-crimped pastry pockets stuffed with a peppery Malabar chicken masala and deep-fried to a golden crunch. Made fresh every evening — best eaten warm with a strong cup of chaya.",
 };
+
+// Matches the number on the Contact section (+91 7012471862).
+const WHATSAPP_NUMBER = "917012471862";
+
+// Only the MRP is entered per weight option below; the discounted price is derived from it.
+const variants = [
+  { weight: "400g", mrp: 280, discountPercent: 10 },
+  { weight: "600g", mrp: 420, discountPercent: 10 },
+  { weight: "1.2kg", mrp: 840, discountPercent: 10 },
+];
+
+const withDiscountedPrice = (variant) => ({
+  ...variant,
+  discountedPrice: Math.round(variant.mrp * (1 - variant.discountPercent / 100)),
+});
 
 export default function Products({ image = kozhiadaPhoto }) {
   const [liked, setLiked] = useState(false);
-  const [added, setAdded] = useState(false);
+  const [ordered, setOrdered] = useState(false);
   const [imgOk, setImgOk] = useState(true);
-  const { addToCart } = useCart();
+  const [selectedWeight, setSelectedWeight] = useState(variants[0].weight);
 
-  const handleAdd = () => {
-    addToCart({ ...product, image });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1800);
+  const selectedVariant = withDiscountedPrice(
+    variants.find((v) => v.weight === selectedWeight)
+  );
+
+  const handleOrder = () => {
+    setOrdered(true);
+    setTimeout(() => setOrdered(false), 1800);
+
+    const message = [
+      "Hi! I'd like to order:",
+      "",
+      `*${product.name}*`,
+      `Weight: ${selectedVariant.weight}`,
+      `Price: ₹${selectedVariant.discountedPrice} (MRP ₹${selectedVariant.mrp}, ${selectedVariant.discountPercent}% OFF)`,
+      "",
+      product.description,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -154,14 +184,45 @@ export default function Products({ image = kozhiadaPhoto }) {
 
           <div className="mt-5 mb-6 sm:mt-6 sm:mb-8 h-px w-32" style={{ backgroundColor: "rgba(255,248,238,0.5)" }} />
 
-          <p className="text-3xl sm:text-4xl md:text-5xl font-bold relative z-10">
-            ₹{product.price} <span className="text-base sm:text-lg font-medium opacity-80">/ {product.weight.toLowerCase()}</span>
-          </p>
+          {/* weight selector */}
+          <div className="flex flex-wrap gap-2 sm:gap-3 relative z-10" role="radiogroup" aria-label="Select weight">
+            {variants.map((v) => {
+              const isSelected = v.weight === selectedWeight;
+              return (
+                <button
+                  key={v.weight}
+                  type="button"
+                  role="radio"
+                  aria-checked={isSelected}
+                  onClick={() => setSelectedWeight(v.weight)}
+                  className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wide transition-colors"
+                  style={{
+                    backgroundColor: isSelected ? PALETTE.ink : "rgba(255,248,238,0.15)",
+                    color: isSelected ? PALETTE.saffron : PALETTE.cream,
+                    border: `1.5px solid ${isSelected ? PALETTE.ink : "rgba(255,248,238,0.4)"}`,
+                  }}
+                >
+                  {v.weight}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="mt-4 sm:mt-5 flex flex-wrap items-baseline gap-2 sm:gap-3 relative z-10">
+            <p className="text-3xl sm:text-4xl md:text-5xl font-bold">
+              ₹{selectedVariant.discountedPrice} <span className="text-base sm:text-lg font-medium opacity-80">/ {selectedVariant.weight.toLowerCase()}</span>
+            </p>
+            <span className="text-lg sm:text-xl font-medium opacity-70 line-through">₹{selectedVariant.mrp}</span>
+            <span
+              className="uppercase tracking-wide text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-full"
+              style={{ backgroundColor: PALETTE.ink, color: PALETTE.saffron }}
+            >
+              {selectedVariant.discountPercent}% OFF
+            </span>
+          </div>
 
           <p className="mt-5 sm:mt-7 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed opacity-95 relative z-10">
-            Crisp, hand-crimped pastry pockets stuffed with a peppery Malabar chicken
-            masala and deep-fried to a golden crunch. Made fresh every evening —
-            best eaten warm with a strong cup of chaya.
+            {product.description}
           </p>
 
           <dl className="mt-7 sm:mt-9 space-y-3 text-sm sm:text-base relative z-10">
@@ -177,14 +238,14 @@ export default function Products({ image = kozhiadaPhoto }) {
 
           <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4 relative z-10">
             <button
-              onClick={handleAdd}
+              onClick={handleOrder}
               className="kz-cart px-6 sm:px-9 py-3 sm:py-4 uppercase tracking-widest text-xs sm:text-sm font-bold rounded-xl"
               style={{
-                backgroundColor: added ? PALETTE.cream : PALETTE.ink,
-                color: added ? PALETTE.ink : PALETTE.cream,
+                backgroundColor: ordered ? PALETTE.cream : PALETTE.ink,
+                color: ordered ? PALETTE.ink : PALETTE.cream,
               }}
             >
-              {added ? "Added to cart ✓" : "Add to cart"}
+              {ordered ? "Opening WhatsApp ✓" : "Order on WhatsApp"}
             </button>
 
             <button

@@ -1,10 +1,7 @@
-import { ShoppingBag } from "lucide-react";
-import { useCart } from "../context/CartContext";
 import { useEffect, useState } from "react";
 import logo from "../assets/bakefills.png";
 
 const Navbar = () => {
-  const { cart, setIsCartOpen } = useCart();
   const [scrolled, setScrolled] = useState(false);
 
   // Detect scroll
@@ -16,12 +13,6 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Cart count
-  const cartCount = cart.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
 
   return (
     <nav
@@ -38,17 +29,6 @@ const Navbar = () => {
         </a>
       </div>
 
-      {/* Cart */}
-      <div
-        onClick={() => setIsCartOpen(true)}
-        className="relative cursor-pointer"
-      >
-        <ShoppingBag size={20} />
-
-        <span className="absolute -top-2 -right-2 bg-orange-500 text-[10px] px-1.5 py-0.5 rounded-full">
-          {cartCount}
-        </span>
-      </div>
     </nav>
   );
 };
